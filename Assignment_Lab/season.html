@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Season Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f3f3;
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        h3 {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid red;
+            color: green;
+            font-weight: bold;
+            display: none; /* Initially hidden */
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Choose your favorite season</h3>
+        <form id="seasonForm">
+            <label><input type="radio" name="season" value="Summer"> Summer</label><br>
+            <label><input type="radio" name="season" value="Winter"> Winter</label><br>
+            <label><input type="radio" name="season" value="Rainy"> Rainy</label><br>
+            <label><input type="radio" name="season" value="Autumn"> Autumn</label><br>
+            <button type="button" onclick="showSelectedSeason()">Submit</button>
+        </form>
+        <div class="output" id="output"></div>
+    </div>
+
+    <script>
+        function showSelectedSeason() {
+            const seasons = document.getElementsByName("season");
+            let selectedSeason = null;
+
+            for (let i = 0; i < seasons.length; i++) {
+                if (seasons[i].checked) {
+                    selectedSeason = seasons[i].value;
+                    break;
+                }
+            }
+
+            const outputDiv = document.getElementById("output");
+            if (selectedSeason) {
+                outputDiv.textContent = `${selectedSeason} season is selected`;
+                outputDiv.style.display = "block";
+            } else {
+                outputDiv.textContent = "Please select a season.";
+                outputDiv.style.display = "block";
+                outputDiv.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

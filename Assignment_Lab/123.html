@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox Skills Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f3f3;
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        h2 {
+            color: green;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-right: 15px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .output {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Get All Marked Checkboxes Value</h2>
+        <p>Select the programming language, you know</p>
+        <form id="skillsForm">
+            <label><input type="checkbox" name="skills" value="Java"> Java</label>
+            <label><input type="checkbox" name="skills" value="PHP"> PHP</label>
+            <label><input type="checkbox" name="skills" value="CSS"> CSS</label>
+            <label><input type="checkbox" name="skills" value="Python"> Python</label><br>
+            <button type="button" onclick="getSelectedSkills()">Submit</button>
+        </form>
+        <div class="output" id="output"></div>
+    </div>
+
+    <script>
+        function getSelectedSkills() {
+            const checkboxes = document.querySelectorAll('input[name="skills"]:checked');
+            const outputDiv = document.getElementById("output");
+
+            let selectedSkills = [];
+            checkboxes.forEach((checkbox) => {
+                selectedSkills.push(checkbox.value);
+            });
+
+            if (selectedSkills.length > 0) {
+                outputDiv.textContent = `I have knowledge in: ${selectedSkills.join(" ")}`;
+            } else {
+                outputDiv.textContent = "No skills selected.";
+            }
+        }
+    </script>
+</body>
+</html>
